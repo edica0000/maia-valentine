@@ -24,22 +24,39 @@
 const yesBtn = document.getElementById("yesButton");
   const noBtn = document.getElementById("noButton");
 
+  // Texte FARA diacritice (exact cum ai cerut)
   const noSequence = [
-    "Îmi pare rău, am zis nu",
-    "Hai, mai lasă-mă",
-    "Edi, pune… nu",
-    "Deja simt că mă enervez",
+    "imi pare rau,am zis nu",
+    "hai mai lasa ma",
+    "edi pbune,nu",
+    "deja simt ca ma enervez",
     "GATA",
-    "Deja ești nesimțit"
+    "deja esti nesimtit"
   ];
 
   let clicks = 0;
   let scale = 1;
 
-  function growYes() {
-    scale += 0.35;
+  // Fix: stilizam butonul NU ca sa fie mereu citibil
+  function styleNoCorner() {
+    noBtn.style.position = "fixed";
+    noBtn.style.right = "18px";
+    noBtn.style.bottom = "18px";
+    noBtn.style.zIndex = "10000";
+    noBtn.style.maxWidth = "260px";
+    noBtn.style.padding = "10px 12px";
+    noBtn.style.fontSize = "14px";
+    noBtn.style.lineHeight = "1.2";
+    noBtn.style.whiteSpace = "normal";  // permite text pe 2 randuri
+    noBtn.style.textAlign = "center";
+  }
+
+  // Fix: DA creste, dar mai lent, ca sa nu acopere imediat
+  function growYesSlow() {
+    scale += 0.12; // << mai mic decat 0.35
     yesBtn.style.transform = "scale(" + scale + ")";
-    yesBtn.style.transition = "transform 120ms ease";
+    yesBtn.style.transition = "transform 180ms ease";
+    yesBtn.style.zIndex = "9000";
   }
 
   function makeYesFullScreen() {
@@ -55,23 +72,30 @@ const yesBtn = document.getElementById("yesButton");
     yesBtn.textContent = "DAAAAA";
   }
 
+  // Aplica stilul de colt de la inceput
+  styleNoCorner();
+
   function handleNoClick() {
     clicks++;
 
+    // Dupa primul click, muta NU in colt si mic
+    styleNoCorner();
+
+    // Afiseaza frazele pe rand
     if (clicks <= noSequence.length) {
       noBtn.textContent = noSequence[clicks - 1];
     }
 
-    growYes();
+    // DA creste lent, ca sa nu acopere frazele
+    growYesSlow();
 
-    // imediat după ultima frază
+    // Dupa ultima fraza => DA fullscreen + ascunde NU
     if (clicks >= noSequence.length) {
       makeYesFullScreen();
       noBtn.style.display = "none";
     }
   }
 
-  // IMPORTANT: face funcția vizibilă pentru onclick=""
   window.handleNoClick = handleNoClick;
   </script>
 </body>
