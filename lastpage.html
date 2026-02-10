@@ -1,93 +1,62 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>❤️</title>
-
-    <style>
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #fff6fa;
-      }
-
-      .wrap {
-        width: min(900px, 92vw);
-        text-align: center;
-        padding: 28px 18px;
-        background: rgba(255, 255, 255, 0.65);
-        border-radius: 18px;
-        border: 2px solid rgba(255, 105, 180, 0.35);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      }
-
-      h1 {
-        margin: 0 0 10px 0;
-        font-size: clamp(22px, 3.2vw, 38px);
-        color: #c24d7b;
-      }
-
-      p {
-        margin: 0 0 18px 0;
-        font-size: clamp(14px, 2.1vw, 20px);
-        color: #6a3550;
-        line-height: 1.4;
-      }
-
-      /* FLOAREA (pusa la loc) */
-      .flower {
-        width: 140px;
-        height: auto;
-        display: block;
-        margin: 10px auto 16px auto;
-      }
-
-      .gif {
-        width: min(520px, 90%);
-        border-radius: 16px;
-        border: 2px solid rgba(255, 105, 180, 0.35);
-        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
-        margin: 10px auto 0 auto;
-        display: block;
-      }
-
-      .btn {
-        margin-top: 18px;
-        padding: 10px 20px;
-        border: 0;
-        border-radius: 10px;
-        background: #ffd1e2;
-        color: #7a2a4b;
-        font-weight: 700;
-        cursor: pointer;
-      }
-
-      .btn:hover {
-        filter: brightness(0.97);
-      }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="css/flower.css" />
   </head>
-
   <body>
-    <div class="wrap">
-      <!-- AICI lasi scrisul tau (daca vrei, schimba doar textul) -->
-      <h1>❤️ Scrisul tău de pe ultima pagină ❤️</h1>
-      <p>Textul tău rămâne aici exact cum îl aveai (doar l-am pus ca exemplu).</p>
+    <div id="thankyou"><b>Esti cea mai buna iubita,iti multumesc ca imi esti alaturi,te iubescccc❤️❤️</b></div>
+    <div class="flower">
+      <div class="f-wrapper">
+        <div class="flower__line"></div>
+        <div class="f">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__leaf flower__leaf--5"></div>
+          <div class="flower__leaf flower__leaf--6"></div>
+          <div class="flower__leaf flower__leaf--7"></div>
+          <div
+            class="flower__leaf flower__leaf--8 flower__fall-down--yellow"
+          ></div>
+        </div>
+      </div>
 
-      <!-- FLOAREA pusa la loc -->
-      <!-- DACA nu apare, incearca sa schimbi cat.png in cat.gif -->
-      <img class="flower" src="cat.png" alt="floare" />
+      <div class="f-wrapper f-wrapper--2">
+        <div class="flower__line"></div>
+        <div class="f">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__leaf flower__leaf--5"></div>
+          <div class="flower__leaf flower__leaf--6"></div>
+          <div class="flower__leaf flower__leaf--7"></div>
+          <div
+            class="flower__leaf flower__leaf--8 flower__fall-down--pink"
+          ></div>
+        </div>
+      </div>
 
-      <!-- Optional: gif-ul final (daca vrei) -->
-      <img class="gif" src="rizz.gif" alt="final" />
-
-      <!-- Optional: buton (daca vrei sa te intorci) -->
-      <button class="btn" onclick="location.href='index.html'">Înapoi</button>
+      <div class="f-wrapper f-wrapper--3">
+        <div class="flower__line"></div>
+        <div class="f">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__leaf flower__leaf--5"></div>
+          <div class="flower__leaf flower__leaf--6"></div>
+          <div class="flower__leaf flower__leaf--7"></div>
+          <div
+            class="flower__leaf flower__leaf--8 flower__fall-down--purple"
+          ></div>
+        </div>
+      </div>
+      <div class="flower__glass"></div>
     </div>
   </body>
 </html>
