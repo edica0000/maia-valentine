@@ -4,7 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mancare</title>
-    <link rel="stylesheet" href="css/food.css?v=2" />
+
+    <!-- pastreaza css-ul proiectului -->
+    <link rel="stylesheet" href="css/food.css" />
+
+    <style>
+      /* doar ca sa arate bine indiferent de css-ul vechi */
+      #foodquestion {
+        margin-top: 10px;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .food-selection {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+        width: min(900px, 92vw);
+        margin: 18px auto 0;
+      }
+
+      .food-item {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 14px;
+        padding: 10px;
+        text-align: center;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      }
+
+      .food-item img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 12px;
+        display: block;
+      }
+
+      .food-item label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: center;
+        margin: 22px 0 10px;
+      }
+
+      /* foloseste clasa existenta "button" daca o ai in css,
+         daca nu, aici e un fallback ca sa arate ok */
+      .button {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 700;
+      }
+    </style>
   </head>
 
   <body>
@@ -14,60 +76,51 @@
 
     <div class="food-selection">
       <div class="food-item">
-        <img src="food/paste.jpg" alt="paste" />
+        <img src="food/paste.jpeg" alt="paste" />
         <label><input type="checkbox" name="food" value="paste" /> paste</label>
       </div>
 
       <div class="food-item">
-        <img src="food/snitel.jpg" alt="cartofi prajiti cu snitel" />
+        <img src="food/cartofi-cu-snitel.jpeg" alt="cartofi prajiti cu snitel" />
         <label>
-          <input type="checkbox" name="food" value="snitel" />
+          <input type="checkbox" name="food" value="cartofi cu snitel" />
           cartofi prajiti cu snitel
         </label>
       </div>
 
       <div class="food-item">
-        <img src="food/sushi.jpg" alt="sushi" />
+        <img src="food/sushi.jpeg" alt="sushi" />
         <label><input type="checkbox" name="food" value="sushi" /> sushi</label>
       </div>
 
       <div class="food-item">
-        <img src="food/pizza-patate.jpg" alt="pizza patate" />
-        <label>
-          <input type="checkbox" name="food" value="pizza patate" />
-          pizza patate
-        </label>
+        <img src="food/pizza-patate.jpeg" alt="pizza patate" />
+        <label><input type="checkbox" name="food" value="pizza patate" /> pizza patate</label>
       </div>
 
       <div class="food-item">
-        <img src="food/hotdog.jpg" alt="hotdog" />
+        <img src="food/hotdog.jpeg" alt="hotdog" />
         <label><input type="checkbox" name="food" value="hotdog" /> hotdog</label>
       </div>
 
       <div class="food-item">
-        <img src="food/ciorba.jpg" alt="ciorba de burta" />
-        <label>
-          <input type="checkbox" name="food" value="ciorba de burta" />
-          ciorba de burta
-        </label>
+        <img src="food/ciorba-de-burta.jpeg" alt="ciorba de burta" />
+        <label><input type="checkbox" name="food" value="ciorba de burta" /> ciorba de burta</label>
       </div>
 
       <div class="food-item">
-        <img src="food/pe-mine.jpg" alt="pe mine" />
-        <label>
-          <input type="checkbox" name="food" value="pe mine" />
-          pe mine😉
-        </label>
+        <img src="food/pe-mine.jpeg" alt="pe mine" />
+        <label><input type="checkbox" name="food" value="pe mine" /> pe mine😉</label>
       </div>
 
       <div class="food-item">
-        <img src="food/salata.jpg" alt="salata" />
+        <img src="food/salata.jpeg" alt="salata" />
         <label><input type="checkbox" name="food" value="salata" /> salata</label>
       </div>
     </div>
 
-    <button class="button" onclick="location.href='dessert.html'">
-      Confirma
-    </button>
+    <div class="actions">
+      <button class="button" onclick="location.href='dessert.html'">Confirma</button>
+    </div>
   </body>
 </html>
