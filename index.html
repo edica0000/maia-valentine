@@ -21,60 +21,58 @@
   <img src="cat.gif" alt="cat asking question" class="responsive" />
 
   <script>
-    const yesBtn = document.getElementById("yesButton");
-    const noBtn = document.getElementById("noButton");
+const yesBtn = document.getElementById("yesButton");
+  const noBtn = document.getElementById("noButton");
 
-    const noSequence = [
-      "Îmi pare rău, am zis nu",
-      "Hai, mai lasă-mă",
-      "Edi, pune… nu",
-      "Deja simt că mă enervez",
-      "GATA",
-      "Deja ești nesimțit"
-    ];
+  const noSequence = [
+    "Îmi pare rău, am zis nu",
+    "Hai, mai lasă-mă",
+    "Edi, pune… nu",
+    "Deja simt că mă enervez",
+    "GATA",
+    "Deja ești nesimțit"
+  ];
 
-    let clicks = 0;
-    let scale = 1;
+  let clicks = 0;
+  let scale = 1;
 
-    function growYes() {
-      scale += 0.35;
-      yesBtn.style.transform = "scale(" + scale + ")";
-      yesBtn.style.transition = "transform 120ms ease";
+  function growYes() {
+    scale += 0.35;
+    yesBtn.style.transform = "scale(" + scale + ")";
+    yesBtn.style.transition = "transform 120ms ease";
+  }
+
+  function makeYesFullScreen() {
+    yesBtn.style.position = "fixed";
+    yesBtn.style.left = "0";
+    yesBtn.style.top = "0";
+    yesBtn.style.width = "100vw";
+    yesBtn.style.height = "100vh";
+    yesBtn.style.borderRadius = "0";
+    yesBtn.style.zIndex = "9999";
+    yesBtn.style.transform = "none";
+    yesBtn.style.fontSize = "10vw";
+    yesBtn.textContent = "DAAAAA";
+  }
+
+  function handleNoClick() {
+    clicks++;
+
+    if (clicks <= noSequence.length) {
+      noBtn.textContent = noSequence[clicks - 1];
     }
 
-    function makeYesFullScreen() {
-      yesBtn.style.position = "fixed";
-      yesBtn.style.left = "0";
-      yesBtn.style.top = "0";
-      yesBtn.style.width = "100vw";
-      yesBtn.style.height = "100vh";
-      yesBtn.style.borderRadius = "0";
-      yesBtn.style.zIndex = "9999";
-      yesBtn.style.transform = "none";
-      yesBtn.style.fontSize = "10vw";
-      yesBtn.textContent = "DAAAAA";
+    growYes();
+
+    // imediat după ultima frază
+    if (clicks >= noSequence.length) {
+      makeYesFullScreen();
+      noBtn.style.display = "none";
     }
+  }
 
-    function handleNoClick() {
-      clicks++;
-
-      // Frazele tale pe rând
-      if (clicks <= noSequence.length) {
-        noBtn.textContent = noSequence[clicks - 1];
-      }
-
-      // DA crește la fiecare apăsare pe NU
-      growYes();
-
-      // IMEDIAT după ultima frază => DA fullscreen + ascunde NU
-      if (clicks >= noSequence.length) {
-        makeYesFullScreen();
-        noBtn.style.display = "none";
-      }
-    }
-
-    // important: face funcția accesibilă din onclick=""
-    window.handleNoClick = handleNoClick;
+  // IMPORTANT: face funcția vizibilă pentru onclick=""
+  window.handleNoClick = handleNoClick;
   </script>
 </body>
 </html>
