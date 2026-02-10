@@ -1,77 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Activities</title>
+    <title>Activitati</title>
     <link rel="stylesheet" href="css/activities.css" />
+    <style>
+      /* doar ca sa arate ok daca nu ai poze la unele */
+      .no-image {
+        width: 180px;
+        height: 180px;
+        border-radius: 12px;
+        border: 3px solid rgba(255, 105, 180, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.35);
+      }
+      .activities-item img {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 3px solid rgba(255, 105, 180, 0.5);
+      }
+      .activities-selection {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        justify-content: center;
+        margin-top: 25px;
+      }
+      .activities-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.25);
+      }
+    </style>
   </head>
+
   <body>
-    <div id="activityquestion"><b>What are we doing after?</b></div>
+    <div id="activitiesQuestion"><b>Ce facem dupa??</b></div>
+
     <div class="activities-selection">
-      <div class="activity-item">
-        <img src="activities/aquarium.jpeg" alt="aquarium" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="aquarium"
-          />aquarium</label
-        >
-      </div>
-      <div class="activity-item">
-        <img src="activities/arcade.jpeg" alt="arcade" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="arcade"
-          />arcade</label
-        >
-      </div>
-      <div class="activity-item">
+      <!-- cinema -->
+      <div class="activities-item">
         <img src="activities/cinema.jpeg" alt="cinema" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="cinema"
-          />cinema</label
-        >
+        <label>
+          <input type="checkbox" name="activity" value="cinema" />
+          cinema
+        </label>
       </div>
-      <div class="activity-item">
-        <img src="activities/keramika.jpeg" alt="ceramics" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="ceramics"
-          />ceramics</label
-        >
+
+      <!-- parc (fara poza momentan) -->
+      <div class="activities-item">
+        <div class="no-image">parc</div>
+        <label>
+          <input type="checkbox" name="activity" value="parc" />
+          parc
+        </label>
       </div>
-      <div class="activity-item">
-        <img src="activities/kunsthalle.jpeg" alt="kunsthalle" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="kunsthalle"
-          />exhibition</label
-        >
+
+      <!-- loc de joaca (fara poza momentan) -->
+      <div class="activities-item">
+        <div class="no-image">loc de joaca</div>
+        <label>
+          <input type="checkbox" name="activity" value="loc de joaca" />
+          loc de joaca
+        </label>
       </div>
-      <div class="activity-item">
-        <img src="activities/park.jpeg" alt="park.jpeg" />
-        <label
-          ><input
-            type="checkbox"
-            name="activities"
-            value="park.jpeg"
-          />park</label
-        >
+
+      <!-- pe bulevard -->
+      <div class="activities-item">
+        <img src="activities/pe-bulevard.jpeg" alt="pe bulevard" />
+        <label>
+          <input type="checkbox" name="activity" value="pe bulevard" />
+          pe bulevard
+        </label>
+      </div>
+
+      <!-- gradina zoologica -->
+      <div class="activities-item">
+        <img src="activities/poze%20zoo.jpeg" alt="gradina zoologica" />
+        <label>
+          <input type="checkbox" name="activity" value="la gradina zoologica" />
+          la gradina zoologica (daca iti amintesti😉)
+        </label>
+      </div>
+
+      <!-- la mall -->
+      <div class="activities-item">
+        <img src="activities/la-mall.jpeg" alt="la mall" />
+        <label>
+          <input type="checkbox" name="activity" value="la mall" />
+          la mall
+        </label>
       </div>
     </div>
+
     <button class="button" onclick="location.href='lastpage.html'">
-      Last page
+      Confirma
     </button>
+
+    <script>
+      // optional: obliga sa bifeze macar una
+      document.querySelector(".button").addEventListener("click", function (e) {
+        const anyChecked = document.querySelector(
+          'input[name="activity"]:checked'
+        );
+        if (!anyChecked) {
+          e.preventDefault();
+          alert("Alege macar una 😭");
+        }
+      });
+    </script>
   </body>
 </html>
