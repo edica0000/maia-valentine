@@ -7,26 +7,72 @@
     <link rel="stylesheet" href="css/valentine.css" />
   </head>
   <body>
-    <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
+    <div id="valentineQuestion"><b>Maia,vrei sa fii partenera mea de valentine's day?</b></div>
     <button class="answerButton" onclick="location.href='thankyou.html'">
-      Yes
+      DAAAAA
     </button>
-    <button class="answerButton" id="noButton">I no no wanna o(╥﹏╥)o</button>
+    <button class="answerButton" id="noButton">Nu vreau</button>
     <br />
     <img src="cat.gif" alt="cat asking question" class="responsive" />
 
     <script>
-      document
-        .getElementById("noButton")
-        .addEventListener("click", function () {
-          var yesButton = document.querySelector(
-            'button[onclick*="thankyou.html"]'
-          );
-          var currentFontSize = parseInt(
-            window.getComputedStyle(yesButton).fontSize
-          );
-          yesButton.style.fontSize = currentFontSize + 10 + "px"; // Increase font size by 5px
-        });
-    </script>
-  </body>
-</html>
+     (() => {
+  const noBtn = document.getElementById("noButton");
+  const yesBtn = document.querySelector('button[onclick*="thankyou.html"]');
+
+  // Textul butonului DA
+  yesBtn.textContent = "DAAAAA";
+  noBtn.textContent = "Nu vreau";
+
+  // Ordinea mesajelor după fiecare apăsare pe „Nu”
+  const noSequence = [
+    "Îmi pare rău, am zis nu",
+    "Hai, mai lasă-mă",
+    "Edi, pune… nu",
+    "Deja simt că mă enervez",
+    "GATA",
+    "Deja ești nesimțit"
+  ];
+
+  let clicks = 0;
+  let scale = 1;
+
+  function growYes() {
+    scale += 0.35; // crește butonul DA la fiecare click pe NU
+    yesBtn.style.transform = scale(${scale});
+    yesBtn.style.transition = "transform 120ms ease";
+  }
+
+  function makeYesFullScreen() {
+    yesBtn.style.position = "fixed";
+    yesBtn.style.left = "0";
+    yesBtn.style.top = "0";
+    yesBtn.style.width = "100vw";
+    yesBtn.style.height = "100vh";
+    yesBtn.style.borderRadius = "0";
+    yesBtn.style.zIndex = "9999";
+    yesBtn.style.transform = "none";
+    yesBtn.style.fontSize = "10vw";
+    yesBtn.textContent = "DAAAAA";
+  }
+
+  noBtn.addEventListener("click", () => {
+    clicks++;
+
+    // 1) Mesaje pe rând, apoi doar „Nu” la infinit
+    if (clicks <= noSequence.length) {
+      noBtn.textContent = noSequence[clicks - 1];
+    } else {
+      noBtn.textContent = "Nu";
+    }
+
+    // 2) DA devine din ce în ce mai mare
+    growYes();
+
+    // 3) După ce treci de listă + încă 2 click-uri => DA pe tot ecranul
+    if (clicks >= noSequence.length) {
+      makeYesFullScreen();
+    }
+  });
+})();
+</script>
