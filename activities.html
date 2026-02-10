@@ -1,17 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Activitati</title>
     <link rel="stylesheet" href="css/activities.css" />
+
+    <!-- FIX: facem pozele mici ca pe celelalte pagini -->
+    <style>
+      /* titlul */
+      #activitiesquestion {
+        text-align: center;
+        font-size: 28px;
+        margin: 20px 0;
+      }
+
+      /* grid ca la celelalte */
+      .activities-selection {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 22px;
+        padding: 10px 25px 25px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      /* card */
+      .activities-item {
+        background: rgba(255, 255, 255, 0.65);
+        border-radius: 14px;
+        padding: 12px;
+        text-align: center;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      }
+
+      /* imagine mica + crop frumos */
+      .activities-item img {
+        width: 200px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 3px solid rgba(255, 105, 180, 0.35);
+        display: block;
+        margin: 0 auto 10px;
+      }
+
+      /* label */
+      .activities-item label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 16px;
+      }
+
+      /* buton */
+      .button {
+        display: block;
+        margin: 12px auto 30px;
+        padding: 12px 26px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    </style>
   </head>
 
   <body>
-    <div id="activitiesquestion">Ce facem dupaa??</div>
+    <div id="activitiesquestion">Ce facem cand ne vedem?</div>
 
     <div class="activities-selection">
-      <!-- cinema (poza ta noua: cinema.jpeg) -->
+      <!-- cinema (poza ta noua) -->
       <div class="activities-item">
         <img src="activities/cinema.jpeg" alt="cinema" />
         <label>
@@ -20,7 +78,7 @@
         </label>
       </div>
 
-      <!-- parc (poza originala: park.jpeg) -->
+      <!-- parc (poza originala) -->
       <div class="activities-item">
         <img src="activities/park.jpeg" alt="parc" />
         <label>
@@ -29,7 +87,7 @@
         </label>
       </div>
 
-      <!-- loc de joaca (poza originala: arcade.jpeg) -->
+      <!-- loc de joaca (poza originala) -->
       <div class="activities-item">
         <img src="activities/arcade.jpeg" alt="loc de joaca" />
         <label>
@@ -38,7 +96,7 @@
         </label>
       </div>
 
-      <!-- pe bulevard (poza ta noua: pe-bulevard.jpeg) -->
+      <!-- pe bulevard (poza ta noua) -->
       <div class="activities-item">
         <img src="activities/pe-bulevard.jpeg" alt="pe bulevard" />
         <label>
@@ -47,16 +105,20 @@
         </label>
       </div>
 
-      <!-- gradina zoologica (poza ta noua: zoo.jpeg) -->
+      <!-- gradina zoologica (poza ta noua) -->
       <div class="activities-item">
         <img src="activities/zoo.jpeg" alt="zoo" />
         <label>
-          <input type="checkbox" name="activity" value="la gradina zoologica" />
-          la gradina zoologica (daca iti amintesti🥺)
+          <input
+            type="checkbox"
+            name="activity"
+            value="la gradina zoologica"
+          />
+          la gradina zoologica (daca iti amintesti😉)
         </label>
       </div>
 
-      <!-- la mall (poza ta noua: la-mall.jpeg) -->
+      <!-- la mall (poza ta noua) -->
       <div class="activities-item">
         <img src="activities/la-mall.jpeg" alt="la mall" />
         <label>
