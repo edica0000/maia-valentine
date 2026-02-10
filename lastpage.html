@@ -3,28 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Final</title>
-    <link rel="stylesheet" href="css/lastpage.css" />
+    <title>❤️</title>
+
     <style>
-      #finalText {
-        font-size: 28px;
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #fff6fa;
+      }
+
+      .wrap {
+        width: min(900px, 92vw);
         text-align: center;
-        margin-top: 40px;
+        padding: 28px 18px;
+        background: rgba(255, 255, 255, 0.65);
+        border-radius: 18px;
+        border: 2px solid rgba(255, 105, 180, 0.35);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      h1 {
+        margin: 0 0 10px 0;
+        font-size: clamp(22px, 3.2vw, 38px);
+        color: #c24d7b;
+      }
+
+      p {
+        margin: 0 0 18px 0;
+        font-size: clamp(14px, 2.1vw, 20px);
+        color: #6a3550;
         line-height: 1.4;
       }
-      .hearts {
-        font-size: 32px;
-        text-align: center;
-        margin-top: 15px;
+
+      /* FLOAREA (pusa la loc) */
+      .flower {
+        width: 140px;
+        height: auto;
+        display: block;
+        margin: 10px auto 16px auto;
+      }
+
+      .gif {
+        width: min(520px, 90%);
+        border-radius: 16px;
+        border: 2px solid rgba(255, 105, 180, 0.35);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+        margin: 10px auto 0 auto;
+        display: block;
+      }
+
+      .btn {
+        margin-top: 18px;
+        padding: 10px 20px;
+        border: 0;
+        border-radius: 10px;
+        background: #ffd1e2;
+        color: #7a2a4b;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        filter: brightness(0.97);
       }
     </style>
   </head>
 
   <body>
-    <div id="finalText">
-      <b>Esti cea mai buna iubita, iti multumesc ca imi esti alaturi, te iubesccc❤️❤️</b>
-    </div>
+    <div class="wrap">
+      <!-- AICI lasi scrisul tau (daca vrei, schimba doar textul) -->
+      <h1>❤️ Scrisul tău de pe ultima pagină ❤️</h1>
+      <p>Textul tău rămâne aici exact cum îl aveai (doar l-am pus ca exemplu).</p>
 
-    <div class="hearts">❤️❤️❤️</div>
+      <!-- FLOAREA pusa la loc -->
+      <!-- DACA nu apare, incearca sa schimbi cat.png in cat.gif -->
+      <img class="flower" src="cat.png" alt="floare" />
+
+      <!-- Optional: gif-ul final (daca vrei) -->
+      <img class="gif" src="rizz.gif" alt="final" />
+
+      <!-- Optional: buton (daca vrei sa te intorci) -->
+      <button class="btn" onclick="location.href='index.html'">Înapoi</button>
+    </div>
   </body>
 </html>
