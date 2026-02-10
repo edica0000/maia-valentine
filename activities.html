@@ -1,55 +1,17 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Activitati</title>
     <link rel="stylesheet" href="css/activities.css" />
-    <style>
-      /* doar ca sa arate ok daca nu ai poze la unele */
-      .no-image {
-        width: 180px;
-        height: 180px;
-        border-radius: 12px;
-        border: 3px solid rgba(255, 105, 180, 0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        text-transform: uppercase;
-        background: rgba(255, 255, 255, 0.35);
-      }
-      .activities-item img {
-        width: 180px;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 12px;
-        border: 3px solid rgba(255, 105, 180, 0.5);
-      }
-      .activities-selection {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 18px;
-        justify-content: center;
-        margin-top: 25px;
-      }
-      .activities-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 12px;
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.25);
-      }
-    </style>
   </head>
 
   <body>
-    <div id="activitiesQuestion"><b>Ce facem dupa??</b></div>
+    <div id="activitiesquestion">Ce facem dupaa??</div>
 
     <div class="activities-selection">
-      <!-- cinema -->
+      <!-- cinema (poza ta noua: cinema.jpeg) -->
       <div class="activities-item">
         <img src="activities/cinema.jpeg" alt="cinema" />
         <label>
@@ -58,25 +20,25 @@
         </label>
       </div>
 
-      <!-- parc (fara poza momentan) -->
+      <!-- parc (poza originala: park.jpeg) -->
       <div class="activities-item">
-        <div class="no-image">parc</div>
+        <img src="activities/park.jpeg" alt="parc" />
         <label>
           <input type="checkbox" name="activity" value="parc" />
           parc
         </label>
       </div>
 
-      <!-- loc de joaca (fara poza momentan) -->
+      <!-- loc de joaca (poza originala: arcade.jpeg) -->
       <div class="activities-item">
-        <div class="no-image">loc de joaca</div>
+        <img src="activities/arcade.jpeg" alt="loc de joaca" />
         <label>
           <input type="checkbox" name="activity" value="loc de joaca" />
           loc de joaca
         </label>
       </div>
 
-      <!-- pe bulevard -->
+      <!-- pe bulevard (poza ta noua: pe-bulevard.jpeg) -->
       <div class="activities-item">
         <img src="activities/pe-bulevard.jpeg" alt="pe bulevard" />
         <label>
@@ -85,16 +47,16 @@
         </label>
       </div>
 
-      <!-- gradina zoologica -->
+      <!-- gradina zoologica (poza ta noua: zoo.jpeg) -->
       <div class="activities-item">
-        <img src="activities/poze%20zoo.jpeg" alt="gradina zoologica" />
+        <img src="activities/zoo.jpeg" alt="zoo" />
         <label>
           <input type="checkbox" name="activity" value="la gradina zoologica" />
-          la gradina zoologica (daca iti amintesti😉)
+          la gradina zoologica (daca iti amintesti🥺)
         </label>
       </div>
 
-      <!-- la mall -->
+      <!-- la mall (poza ta noua: la-mall.jpeg) -->
       <div class="activities-item">
         <img src="activities/la-mall.jpeg" alt="la mall" />
         <label>
@@ -107,18 +69,5 @@
     <button class="button" onclick="location.href='lastpage.html'">
       Confirma
     </button>
-
-    <script>
-      // optional: obliga sa bifeze macar una
-      document.querySelector(".button").addEventListener("click", function (e) {
-        const anyChecked = document.querySelector(
-          'input[name="activity"]:checked'
-        );
-        if (!anyChecked) {
-          e.preventDefault();
-          alert("Alege macar una 😭");
-        }
-      });
-    </script>
   </body>
 </html>
