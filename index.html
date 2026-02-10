@@ -1,71 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Be My Valentine</title>
-    <link rel="stylesheet" href="css/valentine.css" />
-  </head>
-  <body>
-    <div id="valentineQuestion"><b>Maia,vrei sa fii partenera mea de valentine's day?</b></div>
-    <button class="answerButton" onclick="location.href='thankyou.html'">
-      DAAAAA
-    </button>
-    <button class="answerButton" id="noButton" onclick="handleNoClick()">Nu vreau</button>
-    <br />
-    <img src="cat.gif" alt="cat asking question" class="responsive" />
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be My Valentine</title>
 
-    <script>
-     const yesBtn = document.querySelector('button[onclick*="thankyou.html"]');
-  const noBtn  = document.getElementById("noButton");
+  <!-- Păstrează CSS-ul proiectului -->
+  <link rel="stylesheet" href="css/valentine.css" />
+</head>
 
-  yesBtn.textContent = "DAAAAA";
+<body>
+  <div id="valentineQuestion">
+    <b>Maia, vrei să fii partenera mea de Valentine's Day?</b>
+  </div>
 
-  const noSequence = [
-    "Îmi pare rău, am zis nu",
-    "Hai, mai lasă-mă",
-    "Edi, pune… nu",
-    "Deja simt că mă enervez",
-    "GATA",
-    "Deja ești nesimțit"
-  ];
+  <button class="answerButton" id="yesButton" onclick="location.href='thankyou.html'">DAAAAA</button>
+  <button class="answerButton" id="noButton" onclick="handleNoClick()">Nu vreau</button>
 
-  let clicks = 0;
-  let scale = 1;
+  <br />
+  <img src="cat.gif" alt="cat asking question" class="responsive" />
 
-  function growYes() {
-    scale += 0.35;
-    yesBtn.style.transform = scale(${scale});
-    yesBtn.style.transition = "transform 120ms ease";
-  }
+  <script>
+    const yesBtn = document.getElementById("yesButton");
+    const noBtn = document.getElementById("noButton");
 
-  function makeYesFullScreen() {
-    yesBtn.style.position = "fixed";
-    yesBtn.style.left = "0";
-    yesBtn.style.top = "0";
-    yesBtn.style.width = "100vw";
-    yesBtn.style.height = "100vh";
-    yesBtn.style.borderRadius = "0";
-    yesBtn.style.zIndex = "9999";
-    yesBtn.style.transform = "none";
-    yesBtn.style.fontSize = "10vw";
-    yesBtn.textContent = "DAAAAA";
-  }
+    const noSequence = [
+      "Îmi pare rău, am zis nu",
+      "Hai, mai lasă-mă",
+      "Edi, pune… nu",
+      "Deja simt că mă enervez",
+      "GATA",
+      "Deja ești nesimțit"
+    ];
 
-  function handleNoClick() {
-    clicks++;
+    let clicks = 0;
+    let scale = 1;
 
-    // afișează frazele tale pe rând
-    if (clicks <= noSequence.length) {
-      noBtn.textContent = noSequence[clicks - 1];
+    function growYes() {
+      scale += 0.35;
+      yesBtn.style.transform = "scale(" + scale + ")";
+      yesBtn.style.transition = "transform 120ms ease";
     }
 
-    growYes();
-
-    // IMEDIAT după ultima frază => DAAAAA fullscreen și ascunde NU
-    if (clicks >= noSequence.length) {
-      makeYesFullScreen();
-      noBtn.style.display = "none";
+    function makeYesFullScreen() {
+      yesBtn.style.position = "fixed";
+      yesBtn.style.left = "0";
+      yesBtn.style.top = "0";
+      yesBtn.style.width = "100vw";
+      yesBtn.style.height = "100vh";
+      yesBtn.style.borderRadius = "0";
+      yesBtn.style.zIndex = "9999";
+      yesBtn.style.transform = "none";
+      yesBtn.style.fontSize = "10vw";
+      yesBtn.textContent = "DAAAAA";
     }
-  }
-</script>
+
+    function handleNoClick() {
+      clicks++;
+
+      // Frazele tale pe rând
+      if (clicks <= noSequence.length) {
+        noBtn.textContent = noSequence[clicks - 1];
+      }
+
+      // DA crește la fiecare apăsare pe NU
+      growYes();
+
+      // IMEDIAT după ultima frază => DA fullscreen + ascunde NU
+      if (clicks >= noSequence.length) {
+        makeYesFullScreen();
+        noBtn.style.display = "none";
+      }
+    }
+
+    // important: face funcția accesibilă din onclick=""
+    window.handleNoClick = handleNoClick;
+  </script>
+</body>
+</html>
