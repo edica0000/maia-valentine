@@ -5,98 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Be My Valentine</title>
 
-  <!-- Păstrează CSS-ul proiectului -->
+  <!-- CSS-ul proiectului -->
   <link rel="stylesheet" href="css/valentine.css" />
+
+  <!-- Fix mic ca butoanele sa stea lipite si textul sa fie citibil -->
+  <style>
+    /* Pastreaza aspectul proiectului, dar aranjeaza butoanele */
+    #buttonRow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+      flex-wrap: nowrap;
+    }
+
+    /* Butonul NU: text mic si pe 2 randuri daca e nevoie */
+    #noButton {
+      max-width: 280px;
+      white-space: normal;
+      font-size: 14px;
+      line-height: 1.2;
+      padding: 10px 12px;
+      position: relative;
+      z-index: 2; /* mereu deasupra */
+    }
+
+    /* Butonul DA: creste spre stanga, nu peste NU */
+    #yesButton {
+      transform-origin: right center;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="valentineQuestion">
-    <b>Maia, vrei să fii partenera mea de Valentine's Day?</b>
-  </div>
+  <div id="valentineQuestion"><b>Maia, vrei sa fii partenera mea de valentine's day?</b></div>
 
-  <button class="answerButton" id="yesButton" onclick="location.href='thankyou.html'">DAAAAA</button>
-  <button class="answerButton" id="noButton" onclick="handleNoClick()">Nu vreau</button>
+  <div id="buttonRow">
+    <button class="answerButton" id="yesButton" onclick="location.href='thankyou.html'">DAAAAA</button>
+    <button class="answerButton" id="noButton" onclick="handleNoClick()">Nu vreau</button>
+  </div>
 
   <br />
   <img src="cat.gif" alt="cat asking question" class="responsive" />
 
   <script>
-const yesBtn = document.getElementById("yesButton");
-  const noBtn = document.getElementById("noButton");
+    const yesBtn = document.getElementById("yesButton");
+    const noBtn  = document.getElementById("noButton");
 
-  // Texte FARA diacritice (exact cum ai cerut)
-  const noSequence = [
-    "imi pare rau,am zis nu",
-    "hai mai lasa ma",
-    "edi pbune,nu",
-    "deja simt ca ma enervez",
-    "GATA",
-    "deja esti nesimtit"
-  ];
+    // Fraze EXACT cum ai cerut (fara diacritice)
+    const noSequence = [
+      "imi pare rau,am zis nu",
+      "hai mai lasa ma",
+      "edi pbune,nu",
+      "deja simt ca ma enervez",
+      "GATA",
+      "deja esti nesimtit"
+    ];
 
-  let clicks = 0;
-  let scale = 1;
+    let clicks = 0;
+    let scale = 1;
 
-  // Fix: stilizam butonul NU ca sa fie mereu citibil
-  function styleNoCorner() {
-    noBtn.style.position = "fixed";
-    noBtn.style.right = "18px";
-    noBtn.style.bottom = "18px";
-    noBtn.style.zIndex = "10000";
-    noBtn.style.maxWidth = "260px";
-    noBtn.style.padding = "10px 12px";
-    noBtn.style.fontSize = "14px";
-    noBtn.style.lineHeight = "1.2";
-    noBtn.style.whiteSpace = "normal";  // permite text pe 2 randuri
-    noBtn.style.textAlign = "center";
-  }
-
-  // Fix: DA creste, dar mai lent, ca sa nu acopere imediat
-  function growYesSlow() {
-    scale += 0.12; // << mai mic decat 0.35
-    yesBtn.style.transform = "scale(" + scale + ")";
-    yesBtn.style.transition = "transform 180ms ease";
-    yesBtn.style.zIndex = "9000";
-  }
-
-  function makeYesFullScreen() {
-    yesBtn.style.position = "fixed";
-    yesBtn.style.left = "0";
-    yesBtn.style.top = "0";
-    yesBtn.style.width = "100vw";
-    yesBtn.style.height = "100vh";
-    yesBtn.style.borderRadius = "0";
-    yesBtn.style.zIndex = "9999";
-    yesBtn.style.transform = "none";
-    yesBtn.style.fontSize = "10vw";
-    yesBtn.textContent = "DAAAAA";
-  }
-
-  // Aplica stilul de colt de la inceput
-  styleNoCorner();
-
-  function handleNoClick() {
-    clicks++;
-
-    // Dupa primul click, muta NU in colt si mic
-    styleNoCorner();
-
-    // Afiseaza frazele pe rand
-    if (clicks <= noSequence.length) {
-      noBtn.textContent = noSequence[clicks - 1];
+    function growYesSlow() {
+      scale += 0.12; // creste lent ca sa nu acopere textul
+      yesBtn.style.transform = "scale(" + scale + ")";
+      yesBtn.style.transition = "transform 180ms ease";
     }
 
-    // DA creste lent, ca sa nu acopere frazele
-    growYesSlow();
-
-    // Dupa ultima fraza => DA fullscreen + ascunde NU
-    if (clicks >= noSequence.length) {
-      makeYesFullScreen();
-      noBtn.style.display = "none";
+    function makeYesFullScreen() {
+      yesBtn.style.position = "fixed";
+      yesBtn.style.left = "0";
+      yesBtn.style.top = "0";
+      yesBtn.style.width = "100vw";
+      yesBtn.style.height = "100vh";
+      yesBtn.style.borderRadius = "0";
+      yesBtn.style.zIndex = "9999";
+      yesBtn.style.transform = "none";
+      yesBtn.style.transformOrigin = "center";
+      yesBtn.style.fontSize = "10vw";
+      yesBtn.textContent = "DAAAAA";
     }
-  }
 
-  window.handleNoClick = handleNoClick;
+    function handleNoClick() {
+      clicks++;
+
+      // schimba textul pe butonul NU
+      if (clicks <= noSequence.length) {
+        noBtn.textContent = noSequence[clicks - 1];
+      }
+
+      // creste DA spre stanga
+      growYesSlow();
+
+      // dupa ultima fraza: DA fullscreen + ascunde NU
+      if (clicks >= noSequence.length) {
+        makeYesFullScreen();
+        noBtn.style.display = "none";
+      }
+    }
+
+    // IMPORTANT: ca onclick="handleNoClick()" sa mearga sigur
+    window.handleNoClick = handleNoClick;
   </script>
 </body>
 </html>
